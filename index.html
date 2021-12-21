@@ -7,15 +7,24 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.2"></script>
   </head>
   <body>
+    <select id="value">
+      <option>500</option>
+      <option>100</option>
+    </select>
     <div id="vis"></div>
 
     <script type="text/javascript">
+      
+      document.getElementById("value").addEventListener("change", function() {
+        let value = document.getElementById("value");
+      console.log(value, value.value);
+
       var yourVlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
         description: 'A simple bar chart with embedded data.',
         data: {
           values: [
-            {a: 'A', b: 500},
+            {a: 'A', b: value.value},
             {a: 'B', b: 55},
             {a: 'C', b: 43},
             {a: 'D', b: 91},
@@ -32,6 +41,11 @@
           y: {field: 'b', type: 'quantitative'}
         }
       };
+      
       vegaEmbed('#vis', yourVlSpec);
+
+      });
+
+      
     </script>
   </body>
