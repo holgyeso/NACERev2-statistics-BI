@@ -1,0 +1,70 @@
+.viz-title {
+    color: $color-blue-main;
+    width: max-content;
+    position: relative;
+    font-size: 2.5rem;
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+}
+
+.viz-title::after {
+    content: "";
+    text-align: center;
+    background-color: $color-underline-green;
+    height: 15px;
+    width: 110%;
+    left: -5%;
+    top: 60%;
+    position: absolute;
+    z-index: -1;
+}
+
+.viz-guide {
+    font-size: 1.3rem;
+    color: $color-dark-grey;
+    display: flex;
+    flex-direction: column;
+
+    &-info {
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        
+        svg {
+            width: 2rem;
+            height: 2rem;
+            stroke: $color-light-green;
+            margin-right: 1rem;
+        }
+        
+        p {
+            width: 70%;
+            font-size: 1.3rem;
+            color: $color-light-green;
+            margin: 0rem;   
+        }
+        
+        a {
+            text-decoration: none;
+            color: $color-blue-main;
+        }
+    }
+}
+
+.viz-select-element {
+    border: none;
+    border-bottom: 2px solid $color-underline-green;
+    font-family: inherit;
+    text-align: center;
+    padding: 1rem 1rem;
+    margin: 1.5rem auto 4rem auto;
+}
+
+.viz-select-element:focus, .viz-select-element:active {
+    outline: none;
+}
+
+

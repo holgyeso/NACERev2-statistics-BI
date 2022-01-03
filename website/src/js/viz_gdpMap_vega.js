@@ -6,6 +6,12 @@ export default function gdpMap (DATA) {
     let selectedNACE = document.getElementById("nace-cat1").value;
     const valueToShow = document.getElementById('viz-projection-select').value;
     
+    let legendSpec = {
+        format: ",d",
+        labelAlign: 'center',
+        labelFont: "'Encode Sans', sans-serif",
+        titleFont: "'Encode Sans', sans-serif",
+    }
     
     let tooltipSpec = [
         {
@@ -41,7 +47,7 @@ export default function gdpMap (DATA) {
                     field: 'nace_value',
                     type: "quantitative",
                     title: "Az iparág hozzáadott értéke (millió EUR)",
-                    format: ',d',
+                    format: ',.2f',
                 }
                 );
             }
@@ -60,6 +66,7 @@ export default function gdpMap (DATA) {
                         format: '.2%',
                     },
                 );
+                legendSpec['format'] = '%';
             }
         
         
@@ -122,10 +129,11 @@ export default function gdpMap (DATA) {
                         color: {
                             field: 'valueToColorAfter',
                             type: 'quantitative',
-                            title: 'Hozzáadott érték - millió EUR',
+                            title: 'Hozzáadott érték',
                             scale: {
                                 range: ['#89B5AF', '#086E7D'],
                             },
+                            legend: legendSpec,
                         },
                         tooltip: tooltipSpec,
                     },

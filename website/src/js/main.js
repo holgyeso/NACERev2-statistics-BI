@@ -1,5 +1,6 @@
 import * as d3 from 'd3v4';
 import * as viz_gdpMap from'./viz_gdpMap';
+import * as viz_valAdded from './viz_valAdded';
 import crossfilter from 'crossfilter2';
 
 d3.queue().defer(d3.csv, 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data.csv').await(ready);
@@ -19,12 +20,14 @@ function ready(error, data) {
     //kiiratom a nemzetgazdasági ágazatokat
     selectNACE1Options(dataByNACE, filteredDataByNACE);
     selectYearOptions();
+    viz_valAdded.yearSelectCheckboxes();
     
     //ha megváltozik a nemzetgazdasági ágazat, frissítem az "alselecteket" is, hogy csak ebből a kategóriából legyenek a kódok 
     let selectedSubCatDict = {};
     document.getElementById("nace-cat1").addEventListener("change", function (e) {
         selectedSubCatDict = changedNACEOptions(dataByNACE, filteredDataByNACE);
         viz_gdpMap.prepareDataGdpMap(DATA);
+        viz_valAdded.prepareDataValAdded(DATA);
     });
     
     //ha megváltozik valamelyik alkategória, ennek megfelelően frissítem a többit is
@@ -34,6 +37,7 @@ function ready(error, data) {
             refreshNACESubCats(dataByNACE, e, selectedSubCatDict);
             viz_gdpMap.showGDPMapGuides("else");
             viz_gdpMap.prepareDataGdpMap(DATA);
+            viz_valAdded.prepareDataValAdded(DATA);
         })
     });
 
@@ -48,9 +52,22 @@ function ready(error, data) {
     //ha megváltozik a térképnél a projection
     document.getElementById('viz-projection-select').addEventListener("change", function(e) {
         viz_gdpMap.prepareDataGdpMap(DATA);
+    });
+
+    //ha megváltozik az év a 2. ábránál
+    document.querySelectorAll('input[type="checkbox"][name="val-Added-year-check"]').forEach(element => {
+        element.addEventListener("change", function (e) {
+            viz_valAdded.prepareDataValAdded(DATA);
+        })
+    }),
+
+    //ha megváltozik a 2. ábránál a projection
+    document.getElementById("viz-valAdded-change-projection-select").addEventListener("change", function(e) {
+        viz_valAdded.prepareDataValAdded(DATA);
     })
     
     viz_gdpMap.prepareDataGdpMap(DATA);
+    viz_valAdded.prepareDataValAdded(DATA);
 }
 
 function getDataByNace (DATA) {
@@ -191,8 +208,6 @@ function refreshNACESubCats (dataByNACE, changedElement, selectedSubCatDict) {
             html += `<input type="radio" name="viz-GDPMap-year-select" class="viz-GDPMap-year-select" id="viz-years-radio-${year}" value="${year}">
             <label for="viz-years-radio-${year}">${year}</label>`;
         }
-
-        // html += '<input type="radio" name="viz-GDPMap-year-select" class="viz-GDPMap-year-select" id="viz-years-radio-2019" value="2019" checked><label for="viz-years-radio-2019">2019</label>';
 
         yearOptionsDiv.innerHTML = html;
 

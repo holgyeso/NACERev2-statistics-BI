@@ -38,16 +38,26 @@ export function showGDPMapGuides(display) {
         document.getElementById("viz-GDPMap-title").innerHTML = `A(z) 
         <span id="selected-nace">${selectedNACE}</span>
         <span id="selected-nace-type"> ${selectedNaceDesc} </span>
-        hozzáadott értéke`
+        hozzáadott értéke Európában`;
+
+        document.getElementById("viz-valAdded-change-title").innerHTML = `A(z) 
+        <span id="selected-nace">${selectedNACE}</span>
+        <span id="selected-nace-type"> ${selectedNaceDesc} </span>
+        hozzáadott értékének változása 2015-2019`;
     }
     else {
         flexDisplay = "none";
-        document.getElementById("viz-GDPMap-title").innerHTML = 'Bruttó hozzáadott érték - folyó áron <span id="selected-nace"></span><span id="selected-nace-type"></span>';
+        document.getElementById("viz-GDPMap-title").innerHTML = 'Bruttó hozzáadott érték Európában- folyó áron <span id="selected-nace"></span><span id="selected-nace-type"></span>';
     }
     
     document.getElementById("viz-GDPMap-guide").style.display = display;
     document.getElementById("viz-GDPMap-guide-info").style.display = flexDisplay;
     document.getElementById("viz-projection-select").style.display = display;
+    
+    document.getElementById("viz-valAdded-change-guide").style.display = display;
+    document.getElementById("viz-valAdded-change-guide-info").style.display = flexDisplay;
+    document.getElementById("viz-valAdded-change-projection-select").style.display = display;
+
 }
 
 
@@ -119,8 +129,6 @@ export function prepareDataGdpMap (DATA) {
             return row['year'];
         }).filter(selectedYear).top(Infinity);
 
-        console.log(valAddedBySelectedNaceAndYear)
-
         const valueToShow = document.getElementById('viz-projection-select').value;
 
         valAddedBySelectedNaceAndYear.forEach (country => {
@@ -140,8 +148,6 @@ export function prepareDataGdpMap (DATA) {
             preparedData.push(country_dict);
         })
         
-        console.log(preparedData);
-
     }
     
     gdpMap(preparedData);
