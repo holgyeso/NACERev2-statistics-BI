@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap" rel="stylesheet">
+  <title>Vállalkozási statisztikák Európa-szerte</title>
+  <link rel="icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>" />
+  
+</head>
+
+<body>
+  <div class="hero">
+    
+    <div class="hero-title">
+      <h1 class="hero-title-left">
+        Európa a
+      </h1>
+      <h1 class="hero-title-center">
+        vállalati statisztikák
+      </h1>
+      <h1 class="hero-title-right">
+        szempontjából
+      </h1>
+    </div>
+    
+    <div class="hero-desc">
+      <p>Több európai állam is évente adatokat szolgáltat tevékenységi területek szerint (<a href="https://ec.europa.eu/eurostat/web/structural-business-statistics" target="_blank">NACE kódok</a>) az európai statisztikai hivatalnak, amelyben a gazdasági tevékenységek szerkezetét, lebonyolítását és
+        teljesítményét részletezik. Az összesített adatot az Európai Unió statisztikai hivatala <a href="https://ec.europa.eu/eurostat/web/nace-rev2" target="_blank">strukturális üzleti statisztika (SBS)</a>
+        néven hozza nyilvánosságra az Eurostat oldalán. Ebbe belefoglalnak üzleti demográfiai változókat (pl. vállalatok
+        száma), "kimenettel" kapcsolatos változókat (pl. forgalom, hozzáadott érték), és "inputtal" kapcsolatos adatokat
+        is (pl. munkaerő-ráfordítás, anyag- és áruvásárlás és tőkebefektetések).
+      </p>
+    </div>
+    
+  </div>
+  
+  <div class="nace-select">
+    <h1 class="nace-select-title">
+      B-E NACE kategóriák
+    </h1>
+    <p class="nace-select-desc">
+      Az alábbiakban a <span class="nace-select-desc-highlight"> Bányászat, feldolgozó- és egyéb ipar</span> kerül
+      bemutatásra, ezért csak a <span class="nace-select-desc-highlight">B és E kódok</span>kal jelölt nemzetgazdasági
+      ágakat lehet megtekinteni.
+    </p>
+    
+    <div class=nace-select-cat>
+      <p class="nace-select-cat-guide">
+        Kérjük válassza ki a nemzetgazdasági ágat, különben a statisztikák az ország GDP-jére lesznek. Opcionálisan szűkítheti az eredményt ágazatok és szakágazatok kiválasztásval is.
+      </p>
+      <div class="nace-select-cat-guide-info">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p>
+          Ha többet szeretne tudni arról, melyik iparágba milyen tevékenységek tartoznak, kérjük hivatkozzon a <a href="https://www.ksh.hu/docs/osztalyozasok/teaor/teaor08_tartalom_2021_06_01.pdf" target="_blank">Központi Statisztikai Hivatal útmutatójára</a>
+        </p>
+      </div>
+      
+      <select class="nace-select-cat-nace1" id="nace-cat1"></select>
+      
+      <div class="nace-select-cat-subnaces">
+        
+        <select id="nace-cat2" class="nace-select-cat-subnace" hidden>
+          <option value="Default">Válasszon ágazatot! (opcionális)</option>
+        </select>
+        
+        <select id="nace-cat3" class="nace-select-cat-subnace" hidden>
+          <option value="Default">Válasszon alágazatot! (opcionális)</option>
+        </select>
+        
+        <select id="nace-cat4" class="nace-select-cat-subnace" hidden>
+          <option value="Default">Válasszon szakágazatot! (opcionális)</option>
+        </select>
+        
+      </div>
+      
+    </div>
+    
+    <div class="viz-GDPMap">
+      <h1 class="viz-GDPMap-title" id="viz-GDPMap-title">
+        
+        Bruttó hozzáadott érték - folyó áron 
+        <span id="selected-nace"></span>
+        <span id="selected-nace-type"></span>
+          
+        </h1>
+        <p class="viz-GDPMap-guide" id="viz-GDPMap-guide" style="display: none;">
+          Kérjük válassza ki, hogy abszolút értékben szeretné megtekinteni a kiválasztott iparág tényezőköltségen számolt hozzáadott értékét vagy relatívban, az ország GDP-jéhez viszonyítva. 
+        </p>
+          <div class="viz-GDPMap-guide-info" id="viz-GDPMap-guide-info" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p>
+              Az abszolút értékek elemzésével összehasonlíthassa a különböző országokat, pl. hogy melyik országban a legnagyobb az iparág hozzáaadott értéke, míg relatív viszonylatban arra deríthet fényt, hogy a GDP mekkora részét teszi ki az adott iparág.
+            </p>
+          </div>
+        
+
+        <select class="viz-GDPMap-projection-select" id="viz-projection-select" hidden>
+          <option value="absolute">Abszolút értékben</option>
+          <option value='relative'>Relatív értékben (a GDP arányában)</option>
+        </select>
+
+        <p class="viz-GDPMap-guide">
+          Kérjük válassza ki, hogy melyik évre jelentítsük meg az adatokat.
+        </p>
+
+        <div class="viz-GDPMap-years" id="viz-GDPMap-years"></div>
+
+
+      </div>
+      
+      <div class="viz" id="viz_gdpMap"></div>
+      
+    </body>
+    
+    </html>

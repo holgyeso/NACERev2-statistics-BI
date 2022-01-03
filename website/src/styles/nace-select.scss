@@ -1,0 +1,116 @@
+.nace-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3.5rem auto;
+   
+    
+    &-title {
+        color: $color-blue-main;
+        width: max-content;
+        position: relative;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    &-title::after {
+        content: "";
+        text-align: center;
+        background-color: $color-underline-green;
+        height: 15px;
+        width: 110%;
+        left: -5%;
+        top: 60%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    &-desc {
+        font-size: 1.5rem;
+
+        &-highlight {
+            font-weight: 700;
+            color: $color-blue-main;
+        }
+    }
+
+    &-cat {
+
+        margin: 2rem auto 3rem auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-guide {
+            font-size: 1.3rem;
+            color: $color-dark-grey;
+
+            &-info {
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 4.5rem;
+    
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                    stroke: $color-light-green;
+                    margin-right: 1rem;
+                }
+    
+                p {
+                    width: 100%;
+                    font-size: 1.3rem;
+                    color: $color-light-green;
+                    margin: 0rem;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: $color-blue-main;
+                }
+            }
+        }
+
+        &-nace1 {
+            font-family: inherit;
+            font-size: 1.5rem;
+            padding: 1rem 2rem 1rem 2rem;
+            width: max-content;
+            text-align: center;
+            font-weight: 700;
+            color: $color-blue-main;
+            border: 0;
+            border-bottom: 4px solid #C9DDDA;
+            margin-bottom: 2rem;
+        }
+
+        &-nace1:focus, &-subnace:focus, &-nace1:active, &-subnace:active {
+            outline: none;
+        }
+
+        &-subnaces {
+            width: fit-content;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 2rem;
+        }
+
+        &-subnace {
+            width: 100%;
+            border: none;
+            border-bottom: #C9DDDA 2px solid;
+            padding: 1rem 1rem;
+            font-family: inherit;
+
+        }
+
+
+
+    }
+
+
+}
+

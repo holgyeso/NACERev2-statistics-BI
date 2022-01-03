@@ -1,0 +1,102 @@
+.viz-GDPMap {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &-title {
+        color: $color-blue-main;
+        width: max-content;
+        position: relative;
+        font-size: 2.5rem;
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+    }
+    
+    &-title::after {
+        content: "";
+        text-align: center;
+        background-color: $color-underline-green;
+        height: 15px;
+        width: 110%;
+        left: -5%;
+        top: 60%;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    &-guide {
+        font-size: 1.3rem;
+        color: $color-dark-grey;
+        display: flex;
+        flex-direction: column;
+        
+        &-info {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+
+            svg {
+                width: 2rem;
+                height: 2rem;
+                stroke: $color-light-green;
+                margin-right: 1rem;
+            }
+
+            p {
+                width: 70%;
+                font-size: 1.3rem;
+                color: $color-light-green;
+                margin: 0rem;
+            }
+        }
+    }
+
+    &-projection-select {
+        border: none;
+        border-bottom: 2px solid $color-underline-green;
+        font-family: inherit;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin: 1.5rem auto 4rem     auto;
+    }
+
+    &-projection-select:focus, &-projection-select:active {
+        outline: none;
+    }
+
+    &-years {
+        
+        margin: 2rem auto 5rem auto;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+
+        input[type = radio] {
+            display: none;
+        }
+
+        input[type = radio]:checked+label {
+            color: $color-blue-main;
+            font-weight: 600;
+            border-color: $color-blue-main;
+        }
+
+        label {
+            cursor: pointer;
+            font-size: 1.3rem;
+            border-bottom: 2px solid $color-grey;
+            color: $color-dark-grey;
+            padding: 0.5rem 1.5rem;
+        }
+
+        label:hover {
+            border-color: $color-light-green;
+            color: $color-light-green;
+        }
+    }
+    
+}

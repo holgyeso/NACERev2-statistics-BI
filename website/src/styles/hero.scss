@@ -1,0 +1,65 @@
+.hero {
+
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+    
+    &-title {
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        width: max-content;
+        margin-left: 3rem;
+        margin-right: auto;
+        
+        *  {
+            color: $color-light-green;
+            margin: 0rem;
+            width: 100%;
+            font-size: 2rem;
+        }
+        
+        &-left {
+            text-align: left;
+        }
+        
+        &-center {
+            text-transform: uppercase;
+            color: $color-blue-main;
+            margin: 1.5rem auto;
+            font-size: 3.3rem;
+            width: max-content;
+            position: relative;
+        }
+        
+        &-center::after {
+            content: "";
+            text-align: center;
+            background-color: $color-underline-green;
+            height: 15px;
+            width: 110%;
+            left: -5%;
+            top: 60%;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        &-right {
+            text-align: right;
+        }
+    }
+
+    &-desc {
+        margin-left: 10rem;
+        font-size: 1.5rem;
+        text-align: justify;
+        color: $color-dark-grey;
+
+        a {
+            text-decoration: none;
+            color: $color-blue-main;
+        }
+    }
+}
