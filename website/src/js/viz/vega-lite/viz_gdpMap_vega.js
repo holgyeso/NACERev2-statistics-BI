@@ -76,7 +76,7 @@ export default function gdpMap (DATA) {
             "width": 700,
             "height": 500,
             "data": {
-                "url": "https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/map.json",
+                "url": "https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data/map.json",
                 "format": {
                     "type": "topojson",
                     "feature": "counties"
@@ -86,7 +86,7 @@ export default function gdpMap (DATA) {
             layer: [
                 {
                     data: {
-                        url: 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/map.json',
+                        url: 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data/map.json',
                         format: {
                             type: 'topojson',
                             feature: 'europe',
@@ -104,7 +104,7 @@ export default function gdpMap (DATA) {
                 },
                 {
                     data: {
-                        url: 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/map.json',
+                        url: 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data/map.json',
                         format: {
                             type: 'topojson',
                             feature: 'europe',

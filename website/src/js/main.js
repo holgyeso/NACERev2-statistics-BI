@@ -4,7 +4,7 @@ import * as viz_valAdded from './viz/viz_valAdded';
 import * as viz_coNrRev from './viz/viz_coNrRev';
 import crossfilter from 'crossfilter2';
 
-d3.queue().defer(d3.csv, 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data.csv').await(ready);
+d3.queue().defer(d3.csv, 'https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data/data.csv').await(ready);
 
 let DATA = {}
 
