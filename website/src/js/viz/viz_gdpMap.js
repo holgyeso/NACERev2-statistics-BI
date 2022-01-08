@@ -1,64 +1,7 @@
 import crossfilter from 'crossfilter2';
-import gdpMap from './viz_gdpMap_vega';
+import gdpMap from './vega-lite/viz_gdpMap_vega';
 
-export function showGDPMapGuides(display) {
-    let flexDisplay = "inline-flex";
-    if (display == "else") {
-        display = "inline";
-        
-        let selectedNACE = document.getElementById("nace-cat1").value;
-        const subNaces = document.querySelectorAll(".nace-select-cat-subnace");
-        subNaces.forEach (element => {
-            if (element.value == 'Default') {
-                return;
-            }
-            else selectedNACE = element.value;
-        });
-                
-        let selectedNaceDesc = "";
-        
-        switch (selectedNACE.length) {
-            case 1:
-                selectedNaceDesc = "nemzetgazdasági ág";
-                break;
-            case 3:
-                selectedNaceDesc = "ágazat";
-                break;
-            case 4:
-                selectedNaceDesc = "alágazat";
-                break;
-            case 5:
-                    selectedNaceDesc = "szakágazat";
-                    break;
-            default:
-                selectedNaceDesc = "";
-            break;
-        }
 
-        document.getElementById("viz-GDPMap-title").innerHTML = `A(z) 
-        <span id="selected-nace">${selectedNACE}</span>
-        <span id="selected-nace-type"> ${selectedNaceDesc} </span>
-        hozzáadott értéke Európában`;
-
-        document.getElementById("viz-valAdded-change-title").innerHTML = `A(z) 
-        <span id="selected-nace">${selectedNACE}</span>
-        <span id="selected-nace-type"> ${selectedNaceDesc} </span>
-        hozzáadott értékének változása 2015-2019`;
-    }
-    else {
-        flexDisplay = "none";
-        document.getElementById("viz-GDPMap-title").innerHTML = 'Bruttó hozzáadott érték Európában- folyó áron <span id="selected-nace"></span><span id="selected-nace-type"></span>';
-    }
-    
-    document.getElementById("viz-GDPMap-guide").style.display = display;
-    document.getElementById("viz-GDPMap-guide-info").style.display = flexDisplay;
-    document.getElementById("viz-projection-select").style.display = display;
-    
-    document.getElementById("viz-valAdded-change-guide").style.display = display;
-    document.getElementById("viz-valAdded-change-guide-info").style.display = flexDisplay;
-    document.getElementById("viz-valAdded-change-projection-select").style.display = display;
-
-}
 
 
 export function prepareDataGdpMap (DATA) {
@@ -67,11 +10,14 @@ export function prepareDataGdpMap (DATA) {
     
     //filter DATA by indicators
     const dataByIndicator = filter.dimension(function (row) {
-        return row['indicators_desc'];
+        return row['indicators_desc_hu'];
     });
     
+    
     //filter DATA by GDP
-    const dataByGDP = dataByIndicator.filter('Value added, gross - current prices').top(Infinity);
+    const dataByGDP = dataByIndicator.filter('Bruttó hozzáadott érték - folyó áron').top(Infinity);
+
+    
     
     //filter DATA by GDP and selected year
     let selectedYear = document.querySelector('input[type="radio"][name="viz-GDPMap-year-select"]:checked').value;
@@ -81,6 +27,7 @@ export function prepareDataGdpMap (DATA) {
     const dataByGDPAndYear = filter.dimension(function (row) {
         return row['year'];
     }).filter(selectedYear).top(Infinity);
+
     
     let selectedNACE = document.getElementById("nace-cat1").value;
     
@@ -106,7 +53,7 @@ export function prepareDataGdpMap (DATA) {
     else {
 
         //get indicator of value added at factor cost
-        const valueAddedIndicator = dataByIndicator.filter('Value added at factor cost - million euro').top(Infinity);
+        const valueAddedIndicator = dataByIndicator.filter('Hozzáadott érték tényezőköltségen - millió euró').top(Infinity);
         
         
         //get indicator of value added at factor cost of the selected NACE
@@ -118,10 +65,13 @@ export function prepareDataGdpMap (DATA) {
             else selectedNACE = element.value;
         });
 
+
         filter = crossfilter(valueAddedIndicator);
         const valAddedBySelectedNace = filter.dimension(function (row) {
             return row['nace_r2'];
         }).filter(selectedNACE).top(Infinity);
+
+        
 
         //filter for year too
         filter = crossfilter(valAddedBySelectedNace);

@@ -79,75 +79,70 @@ export default function valAddedChart(DATA) {
     }
 
     let valAddedSpec = {
-        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 1000,
-        "height": 500,
-        "data": {
-            "values": DATA,
+        $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+        width: 1000,
+        height: 500,
+        data: {
+            values: DATA,
         },
-        "selection": {
-            "grid": {
-                "type": "interval", "bind": "scales"
+        selection: {
+            grid: {
+                type: "interval", "bind": "scales"
             }
         },
-        "mark": "point",
-        "encoding": {
-            "y": {
-                "field": "valueToColorAfter",
-                "type": "quantitative",
-                "scale": yAxisScaleSpec,
-                "axis": {
-                    "title": "Hozzáadott érték (millió EUR)",
-                    "gridColor": '#C9DDDA',
-                    "domainColor": '#C9DDDA',
-                    "tickColor": '#C9DDDA',
-                    "labelFontSize": 11,
-                    "labelFont": "'Encode Sans', sans-serif",
-                    "labelPadding": 10,
-                    "titleFont": "'Encode Sans', sans-serif",
-                    "titlePadding": 15,
-                    "titleFontSize": 13,
-                    "format": yAxisFormat,
+        mark: "point",
+        encoding: {
+            y: {
+                field: "valueToColorAfter",
+                type: "quantitative",
+                scale: yAxisScaleSpec,
+                axis: {
+                    title: "Hozzáadott érték (millió EUR)",
+                    gridColor: '#C9DDDA',
+                    domainColor: '#C9DDDA',
+                    tickColor: '#C9DDDA',
+                    labelFontSize: 11,
+                    labelFont: "'Encode Sans', sans-serif",
+                    labelPadding: 10,
+                    titleFont: "'Encode Sans', sans-serif",
+                    titlePadding: 15,
+                    titleFontSize: 13,
+                    format: yAxisFormat,
                 }
             },
-            "x": { 
-                "field": "country", 
-                "type": "nominal", 
-                "axis": {
-                    "title": "Ország",
-                    "grid": true,
-                    "gridColor": '#EAF2F1',
-                    "domainColor": '#C9DDDA',
-                    "labelFont": "'Encode Sans', sans-serif",
-                    "labelFontSize": 12,
-                    "labelPadding": 10,
-                    "tickColor": '#C9DDDA',
-                    "titleFont": "'Encode Sans', sans-serif",
-                    "titlePadding": 15,
-                    "titleFontSize": 13,
+            x: { 
+                field: "country", 
+                type: "nominal", 
+                axis: {
+                    title: "Ország",
+                    grid: true,
+                    gridColor: '#EAF2F1',
+                    domainColor: '#C9DDDA',
+                    labelFont: "'Encode Sans', sans-serif",
+                    labelFontSize: 12,
+                    labelPadding: 10,
+                    tickColor: '#C9DDDA',
+                    titleFont: "'Encode Sans', sans-serif",
+                    titlePadding: 15,
+                    titleFontSize: 13,
                 },
-                "sort": {
-                    "field": "CAGR",
-                    "order": "ascending"
+                sort: {
+                    field: "CAGR",
+                    order: "ascending"
                 },
                 },
-            "color": {
-                "field": "year",
-                "type": "nominal",
-                "scale": {
+            color: {
+                field: "year",
+                type: "nominal",
+                scale: {
                     domain: Object.keys(year_colors),
                     range: Object.values(year_colors),
                 },
-                "legend": null,
+                legend: null,
             },
-            // "order": {
-            //     "field": "CAGR",
-            //     "type": "quantitative",
-            //     "sort": "ascending",
-            // },
-            "tooltip": tooltipSpec,
-            "size": {
-                "value": 85,
+            tooltip: tooltipSpec,
+            size: {
+                value: 100,
             }
         }
     }

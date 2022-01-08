@@ -2,6 +2,8 @@
 @import 'scaffolding';
 @import 'hero';
 @import 'nace-select';
-@import 'viz-GDPMap';
-@import 'viz-valAdded-change';
-@import 'viz';
+@import './viz_styles/viz.scss';
+@import './viz_styles/viz-GDPMap.scss';
+@import './viz_styles/viz-valAdded-change.scss';
+@import './viz_styles/viz-coNrRev.scss';
+@import 'footer';

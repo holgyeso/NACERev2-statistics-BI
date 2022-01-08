@@ -1,0 +1,23 @@
+.viz-GDPMap {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+
+    &-projection-select {
+        border: none;
+        border-bottom: 2px solid $color-underline-green;
+        font-family: inherit;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin: 1.5rem auto 4rem     auto;
+    }
+
+    &-projection-select:focus, &-projection-select:active {
+        outline: none;
+    }
+
+}

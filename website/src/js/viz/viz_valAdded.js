@@ -1,5 +1,5 @@
 import crossfilter from "crossfilter2";
-import valAddedChart from "./viz_valAdded_vega";
+import valAddedChart from "./vega-lite/viz_valAdded_vega";
 
 export function yearSelectCheckboxes() {
     const checkboxesDiv = document.getElementById("viz-valAdded-change-year-select");
@@ -17,11 +17,11 @@ export function prepareDataValAdded (DATA) {
     
     //filter DATA by indicators
     const dataByIndicator = filter.dimension(function (row) {
-        return row['indicators_desc'];
+        return row['indicators_desc_hu'];
     });
     
     //filter DATA by GDP
-    const dataByGDP = dataByIndicator.filter('Value added, gross - current prices').top(Infinity);
+    const dataByGDP = dataByIndicator.filter('Bruttó hozzáadott érték - folyó áron').top(Infinity);
     
     let selectedNACE = document.getElementById("nace-cat1").value;
     
@@ -68,7 +68,7 @@ export function prepareDataValAdded (DATA) {
     else {
         
         //get indicator of value added at factor cost
-        const valueAddedIndicator = dataByIndicator.filter('Value added at factor cost - million euro').top(Infinity);
+        const valueAddedIndicator = dataByIndicator.filter('Hozzáadott érték tényezőköltségen - millió euró').top(Infinity);
         
         
         //get indicator of value added at factor cost of the selected NACE

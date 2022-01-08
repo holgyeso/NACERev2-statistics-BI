@@ -13,6 +13,28 @@
         }
     }
 
+    &-div {
+        padding: 0;
+
+        &-dummy {
+            width: fit-content;
+        }
+
+    }
+
+    &-div.fixed {
+        position: fixed;
+        top: 0;
+        padding: 1rem 0rem;
+        z-index: 100;
+        background-color: #fefefe;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s all;
+    }
+
     &-cat {
 
         margin: 2rem auto 0rem auto;

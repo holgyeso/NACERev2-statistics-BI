@@ -99,6 +99,7 @@ export default function gdpMap (DATA) {
                         type: 'geoshape',
                         fill: '#D9D9D9',
                         stroke: '#fefefe',
+                        strokeWidth: 1
                     },
                 },
                 {
@@ -124,16 +125,28 @@ export default function gdpMap (DATA) {
                     projection: {
                         type: 'naturalEarth1',
                     },
-                    mark: 'geoshape',
+                    mark: {
+                        type: 'geoshape',
+                        strokeWidth: 1,
+                        stroke: '#fefefe'
+                    },
                     encoding: {
+                        // scale: {
+                        //     rangeMin: 0,
+                        // },
+                        // scale: {
+                        //     range: 0,
+                        // },
                         color: {
+                            
                             field: 'valueToColorAfter',
                             type: 'quantitative',
                             title: 'Hozzáadott érték',
                             scale: {
                                 range: ['#89B5AF', '#086E7D'],
+                                domainMin: 0,
                             },
-                            legend: legendSpec,
+                            legend: legendSpec
                         },
                         tooltip: tooltipSpec,
                     },

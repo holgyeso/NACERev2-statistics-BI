@@ -1,0 +1,41 @@
+footer {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+
+    p {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+    }
+
+    .footer-name {
+        width: fit-content;
+        color: $color-blue-main;
+        font-weight: 600;
+        font-size: 1.6rem;
+        position: relative;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+    }
+
+    .footer-name::after {
+        content: "";
+        text-align: center;
+        background-color: $color-underline-green;
+        height: 10px;
+        width: 110%;
+        left: -5%;
+        top: 60%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-blue-main;
+    }
+}
