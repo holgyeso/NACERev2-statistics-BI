@@ -75,6 +75,9 @@ export default function gdpMap (DATA) {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "width": 700,
             "height": 500,
+            config: {
+                background: "transparent",
+            },
             "data": {
                 "url": "https://raw.githubusercontent.com/holgyeso/holgyeso.github.io/main/data/map.json",
                 "format": {

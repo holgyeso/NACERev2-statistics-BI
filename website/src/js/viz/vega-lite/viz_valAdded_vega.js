@@ -82,6 +82,9 @@ export default function valAddedChart(DATA) {
         $schema: "https://vega.github.io/schema/vega-lite/v5.json",
         width: 1000,
         height: 500,
+        config: {
+            background: "transparent",
+        },
         data: {
             values: DATA,
         },

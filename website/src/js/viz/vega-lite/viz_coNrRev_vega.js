@@ -94,6 +94,7 @@ export default function coNrRevChart(DATA) {
             bind: "scales"
         }],
         config: {
+            background: "transparent",
             legend: {
                 padding: 25,
                 labelFont: "'Encode Sans', sans-serif",
