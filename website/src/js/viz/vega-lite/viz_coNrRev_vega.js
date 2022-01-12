@@ -27,25 +27,25 @@ export default function coNrRevChart(DATA) {
                 field: 'coNr',
                 type: 'quantitative',
                 title: "Vállalatok száma",
-                format: ',d',
+                format: '.2f',
             },
             {
                 field: 'revenue',
                 type: 'quantitative',
                 title: "Átlag-árbevétel vagy -bruttó díjbevétel - millió euró",
-                format: ',d',
+                format: '.2f',
             },
             {
                 field: 'expenses',
                 type: 'quantitative',
                 title: "Átlagkiadások összesen - millió euró",
-                format: ',d',
+                format: '.2f',
             },
             {
                 field: 'margin',
                 type: 'quantitative',
                 title: "Átlagbruttó működési eredmény - millió euró",
-                format: ',d',
+                format: '.2f',
             },
         );
     }
